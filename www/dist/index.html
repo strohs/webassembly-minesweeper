@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Rust WebAssembly MineSweeper</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <h2>WebAssembly Minesweeper</h2>
+    <div id="help-container">
+      <ul>
+        <li><strong>To win:</strong> you must correctly flag all squares that contain a mine</li>
+        <li>You lose if:
+          <ul>
+            <li>you reveal a square with a mine</li>
+            <li>you place the last flag and one at least one of the squares is flagged incorrectly</li>
+          </ul>
+        </li>
+        <li><strong>Left Click</strong> a square to reveal it</li>
+        <li><strong>Shift+Left Click</strong> to place a flag (&#128681;) on a square</li>
+        <li><strong>Ctrl+Left Click</strong> to place a question mark (?) on a square</li>
+        <li>Left click the smiley face button to start (or restart) a game</li>
+        <li>Click the settings button to adjust the number of rows and columns in the grid</li>
+      </ul>
+    </div>
+    <h3 id="result-header"> </h3>
+    <div class="info-bar">
+      <div id="mine-counter">000</div>
+      <button id="game-btn" type="button"></button>
+      <div id="timer">000</div>
+    </div>
+    <canvas id="grid-canvas"></canvas>
+    <footer id="settings-footer">
+      <div class="button-row">
+        <button id="settings-btn" class="btn" type="button">Settings &#9881;</button>
+<!--        <button id="help-btn" class="btn" type="button">?</button>-->
+      </div>
+      <div id="settings-sliders">
+        <div id="row-settings" class="slider-group">
+          <label for="row-slider">Rows:</label>
+          <input type="range" id="row-slider" class="slider" name="rows" min="8" max="20" value="8">
+          <span id="row-slider-output" class="slider-output"></span>
+        </div>
+        <div id="col-setting" class="slider-group">
+          <label for="col-slider">Cols:</label>
+          <input type="range" id="col-slider" class="slider" name="cols" min="8" max="20" value="8">
+          <span id="col-slider-output" class="slider-output"></span>
+        </div>
+      </div>
+    </footer>
+    <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
+    <script src="./bootstrap.js"></script>
+  </body>
+</html>

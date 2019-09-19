@@ -31,10 +31,10 @@ is the easiest option if you have Rust and npm installed locally on your machine
 3. start minesweeping
 
 ### Running (option 2)
-This option allows you to use your web-server of choice to host the game files. For example, could use busybox, instant python
-web server, Apache, NGINX etc... The caveat is that you must first configure the web-server to recognize the 
+This option allows you to use your web-server of choice to host the game files. For example, you could use busybox, 
+instant python web server, Apache, NGINX etc... The caveat is that you must first configure the server to recognize the 
 `application/wasm` MIME type (if it doesn't already). Once configured, copy all files from 
-the [www/dist](./www/dist) to your web-server.  
+the [www/dist](./www/dist) to your web-server and point your browser to the index.html page to start the game.  
 
 ### project directories
 * rust source code is in the [src](./src) directory

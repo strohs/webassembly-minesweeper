@@ -5,9 +5,6 @@ game using [Rust](https://www.rust-lang.org), [WebAssembly](https://webassembly.
 Rust performs the game logic and maintains game state, while Javascript does the event handling and rendering
 of the game's UI elements to a 2D canvas.
 
-Admittedly, minesweeper is not the most demanding of games, and definitely overkill for wasm's performance improvements.
-Nonetheless, it was a great learning experience into the basics of WebAssembly with Rust.
-
 ![screenshot](./screenshot.png "Minesweeper Screenshot") 
 
 

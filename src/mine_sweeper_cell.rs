@@ -37,6 +37,7 @@ pub enum CellKind {
 /// MineSweeper cell
 /// holds the state of a minesweeper cell (square)
 #[wasm_bindgen]
+#[repr(C)]
 #[derive(Clone, Copy, PartialEq, Eq)]
 pub struct Cell {
     state: CellState,
@@ -65,21 +66,22 @@ impl Cell {
 //        }
 //    }
 
-    /// is this cell currently flagged?
+    /// returns true if this cell is currently flagged
     pub fn is_flagged(&self) -> bool {
         self.state == CellState::Flagged
     }
 
-    /// is this cell currently questioned?
+    /// returns true if this cell is currently questioned
     pub fn is_questioned(&self) -> bool {
         self.state == CellState::Questioned
     }
 
+    /// returns true if this cell has been revealed
     pub fn is_revealed(&self) -> bool {
         self.state == CellState::Revealed
     }
 
-    /// is the cell mined?
+    /// returns true if this cell contains a mined
     pub fn is_mined(&self) -> bool {
         self.kind == CellKind::Mine
     }
@@ -90,9 +92,12 @@ impl Cell {
     }
 
     /// get the cell's `CellKind`
-//    fn get_kind(&self) -> &CellKind {
-//        &self.kind
-//    }
+   pub fn get_kind(&self) -> u8 {
+       match &self.kind {
+           CellKind::Mine => 0,
+           CellKind::Empty => 1,
+       }
+   }
 
     /// set the cell's `CellState`
     pub fn set_state(&mut self, state: CellState) {
@@ -100,9 +105,14 @@ impl Cell {
     }
 
     /// get the cell's `CellState`
-//    fn get_state(&self) -> &CellState {
-//        &self.state
-//    }
+   pub fn get_state(&self) -> u8 {
+       match &self.state {
+           CellState::Revealed => 0,
+           CellState::Flagged => 1,
+           CellState::Questioned => 2,
+           CellState::Hidden => 3,
+       }
+   }
 
     /// return the cell's adjacent mine count
     pub fn adj_mine_count(&self) -> u8 {

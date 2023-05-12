@@ -20,7 +20,7 @@ class MinesweeperState {
         // the size of the minesweeper Cell struct in bytes
         this.cellSizeBytes = Minesweeper.cell_size();
         this.cellsArray = new Uint8Array(memory.buffer, this.minesweeper.cells(), this.num_rows * this.num_cols * this.cellSizeBytes );
-        // log the locations of mines
+        // log the locations of mines to the console
         console.log(this.minesweeper.debug());
     }
 

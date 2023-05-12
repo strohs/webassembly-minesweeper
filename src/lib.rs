@@ -57,7 +57,7 @@ impl Minesweeper {
 
     /// Generates `count` amount of random grid indices ranging from 0..`len` and returns them
     /// in a Vector<usize>
-    /// len - the max index value (exclusive) to use for generating indices
+    /// `len` is the max index value (exclusive) to use for generating indices
     fn gen_rand_grid_indices(len: usize, count: usize) -> Vec<usize> {
         // build a vec of all grid indices in row major form and shuffle them
         let mut grid_indices: Vec<usize> = (0..len).map(|i| i).collect();
@@ -153,6 +153,12 @@ impl Minesweeper {
     pub fn debug(&self) -> String {
         log!("size of cell {} bytes", std::mem::size_of::<Cell>() );
         log!("rows:{} cols:{}", self.num_rows, self.num_cols);
+        // for r in 0..self.num_rows {
+        //     for c in 0..self.num_cols {
+        //         let cell = &self.grid[self.to_1d(r, c)];
+        //         log!("{}::{}  s:{} k:{} a:{}  ",r,c, cell.get_state(), cell.get_kind(), cell.adj_mine_count());
+        //     }
+        // }
         format!("{:?}", self)
     }
 
@@ -338,7 +344,10 @@ impl fmt::Display for Minesweeper {
         for ri in 0..self.num_rows {
             for ci in 0..self.num_cols {
                 let index = self.to_1d(ri, ci);
-                buf.push_str(format!(" {}", self.grid[index]).as_str());
+                //let cell = &self.grid[index];
+                let cell_str = format!(" {}", self.grid[index]);
+
+                buf.push_str(cell_str.as_str());
             }
             buf.push_str("\n")
         }
